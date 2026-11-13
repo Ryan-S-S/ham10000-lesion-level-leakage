@@ -10,6 +10,7 @@ O relatório completo está disponível em [`results/relatorio_resultados.html`]
 
 O documento reúne:
 
+- teste preliminar de seis encoders de imagem, com redes neurais reduzidas (50 neurônios na camada interna);
 - resultados da rede neural nas quatro condições experimentais;
 - cinco sementes aleatórias (7, 12, 42, 99 e 100);
 - médias e desvios-padrão descritivos das cinco execuções;
@@ -46,6 +47,8 @@ O dataset original não é redistribuído neste repositório. Consulte a publica
 
 As imagens foram representadas por vetores de 2.048 atributos extraídos pelo embedder **Painters**, disponível no complemento Image Analytics do Orange Data Mining.
 
+Em uma etapa preliminar, o Painters foi comparado a outros cinco embedders do mesmo complemento (SqueezeNet, Inception, VGG19, DeepLoc e OpenFace). Essa comparação usou redes neurais reduzidas, com 50 neurônios na camada interna, e amostragem Stratified Shuffle split (5 amostras, 80% dos dados), por se tratar de uma etapa inicial e pouco decisiva no projeto. O Painters obteve os melhores valores, seguido pelo SqueezeNet; os resultados estão no relatório e não são comparáveis aos dos experimentos principais.
+
 ### Dados clínicos
 
 Foram comparadas duas configurações: (1) atributos de imagem; e (2) atributos de imagem combinados com sexo, idade e localização anatômica.
@@ -59,7 +62,7 @@ Foram comparadas duas configurações: (1) atributos de imagem; e (2) atributos 
 
 ### Classificadores
 
-A rede neural é o modelo principal. O relatório também apresenta uma comparação complementar com regressão logística e floresta aleatória, além de uma execução da rede neural utilizando somente dados clínicos. Os hiperparâmetros completos devem ser consultados no manuscrito e no workflow do Orange publicado junto aos scripts.
+A rede neural é o modelo principal. O teste preliminar de encoders utilizou uma versão reduzida da rede (50 neurônios na camada interna). O relatório também apresenta uma comparação complementar com regressão logística e floresta aleatória, além de uma execução da rede neural utilizando somente dados clínicos. Os hiperparâmetros completos devem ser consultados no manuscrito e no workflow do Orange publicado junto aos scripts.
 
 ## Estrutura recomendada do repositório
 
@@ -93,6 +96,7 @@ Os scripts do Orange usam as variáveis `in_data` e `out_data` fornecidas pelo p
 2. Consulte primeiro o resumo das cinco sementes.
 3. Utilize a seção de resultados por semente para conferir as execuções individuais.
 4. Consulte as comparações complementares e as matrizes de confusão, lembrando que estas foram exportadas para a semente 42.
+5. Consulte a seção de teste de encoders para a comparação preliminar dos seis embedders, feita com redes reduzidas e amostragem aleatória estratificada.
 
 As médias e os desvios-padrão apresentados no HTML foram recalculados a partir dos valores individuais exportados com três casas decimais. Pequenas diferenças de arredondamento podem ocorrer em relação a cálculos feitos com a precisão interna completa do Orange.
 
